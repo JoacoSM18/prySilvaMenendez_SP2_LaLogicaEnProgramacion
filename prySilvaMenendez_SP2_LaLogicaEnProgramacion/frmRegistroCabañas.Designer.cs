@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mrcTipo = new System.Windows.Forms.GroupBox();
+            this.txtDias = new System.Windows.Forms.TextBox();
             this.lblDias = new System.Windows.Forms.Label();
             this.lblPersonas = new System.Windows.Forms.Label();
             this.lblTipo = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
-            this.txtDias = new System.Windows.Forms.TextBox();
             this.mrcTipo.SuspendLayout();
             this.mrcAdicionales.SuspendLayout();
             this.mrcFormadePago.SuspendLayout();
@@ -71,6 +71,14 @@
             this.mrcTipo.TabIndex = 0;
             this.mrcTipo.TabStop = false;
             this.mrcTipo.Text = "Tipo de Cabaña";
+            // 
+            // txtDias
+            // 
+            this.txtDias.BackColor = System.Drawing.Color.NavajoWhite;
+            this.txtDias.Location = new System.Drawing.Point(396, 53);
+            this.txtDias.Name = "txtDias";
+            this.txtDias.Size = new System.Drawing.Size(83, 23);
+            this.txtDias.TabIndex = 6;
             // 
             // lblDias
             // 
@@ -103,9 +111,6 @@
             // 
             this.cmbPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPersonas.FormattingEnabled = true;
-            this.cmbPersonas.Items.AddRange(new object[] {
-            "4",
-            "8"});
             this.cmbPersonas.Location = new System.Drawing.Point(244, 51);
             this.cmbPersonas.Name = "cmbPersonas";
             this.cmbPersonas.Size = new System.Drawing.Size(91, 24);
@@ -116,9 +121,6 @@
             this.cmbTipo.BackColor = System.Drawing.Color.AntiqueWhite;
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
-            this.cmbTipo.Items.AddRange(new object[] {
-            "A",
-            "B"});
             this.cmbTipo.Location = new System.Drawing.Point(48, 56);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(104, 24);
@@ -280,14 +282,6 @@
             this.btnAceptar.Text = "&ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
             // 
-            // txtDias
-            // 
-            this.txtDias.BackColor = System.Drawing.Color.NavajoWhite;
-            this.txtDias.Location = new System.Drawing.Point(396, 53);
-            this.txtDias.Name = "txtDias";
-            this.txtDias.Size = new System.Drawing.Size(83, 23);
-            this.txtDias.TabIndex = 6;
-            // 
             // frmRegistroCabañas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -302,7 +296,7 @@
             this.Name = "frmRegistroCabañas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Reserva de Cabañas";
-            this.Load += new System.EventHandler(this.frmRegistroCabañas_Load);
+            this.Load += new System.EventHandler(this.frmRegistroCabañas_Load_1);
             this.mrcTipo.ResumeLayout(false);
             this.mrcTipo.PerformLayout();
             this.mrcAdicionales.ResumeLayout(false);

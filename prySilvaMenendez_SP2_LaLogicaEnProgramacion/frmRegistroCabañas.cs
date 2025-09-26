@@ -16,5 +16,10 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         {
             InitializeComponent();
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

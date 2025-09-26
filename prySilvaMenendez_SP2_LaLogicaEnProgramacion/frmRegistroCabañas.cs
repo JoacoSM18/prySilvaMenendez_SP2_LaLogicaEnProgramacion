@@ -21,5 +21,10 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         {
 
         }
+
+        private void lblPersonas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

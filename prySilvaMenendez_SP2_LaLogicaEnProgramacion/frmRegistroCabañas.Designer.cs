@@ -115,6 +115,7 @@
             this.cmbPersonas.Name = "cmbPersonas";
             this.cmbPersonas.Size = new System.Drawing.Size(91, 24);
             this.cmbPersonas.TabIndex = 1;
+            this.cmbPersonas.SelectedIndexChanged += new System.EventHandler(this.cmbPersonas_SelectedIndexChanged);
             // 
             // cmbTipo
             // 
@@ -125,6 +126,7 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(104, 24);
             this.cmbTipo.TabIndex = 0;
+            this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged_1);
             // 
             // mrcAdicionales
             // 
@@ -212,6 +214,7 @@
             this.btnTarjeta.TabStop = true;
             this.btnTarjeta.Text = "&Tarjeta";
             this.btnTarjeta.UseVisualStyleBackColor = true;
+            this.btnTarjeta.CheckedChanged += new System.EventHandler(this.btnTarjeta_CheckedChanged_1);
             // 
             // btnEfectivo
             // 
@@ -223,6 +226,7 @@
             this.btnEfectivo.TabStop = true;
             this.btnEfectivo.Text = "&Efectivo";
             this.btnEfectivo.UseVisualStyleBackColor = true;
+            this.btnEfectivo.CheckedChanged += new System.EventHandler(this.btnEfectivo_CheckedChanged_1);
             // 
             // mrcTitular
             // 
@@ -281,6 +285,7 @@
             this.btnAceptar.TabIndex = 4;
             this.btnAceptar.Text = "&ACEPTAR";
             this.btnAceptar.UseVisualStyleBackColor = true;
+            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click_1);
             // 
             // frmRegistroCabañas
             // 

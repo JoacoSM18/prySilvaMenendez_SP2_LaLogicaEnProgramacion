@@ -12,12 +12,12 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
 {
     public partial class frmRegistroCabañas : Form
     {
-        float precioTipoA = 20;
-        float precioTipoB = 34;
-        float porPersona = 1;
-        float cocina = 1;
-        float heladera = 1.5f;
-        float televisor = 2;
+        private float precioTipoA = 20;
+        private float precioTipoB = 34;
+        private float porPersona = 1;
+        private float cocina = 1;
+        private float heladera = 1.5f;
+        private float televisor = 2;
 
         public frmRegistroCabañas()
         {
@@ -26,71 +26,75 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
 
         private void frmRegistroCabañas_Load_1(object sender, EventArgs e)
         {
-            cmbTipo.Items.Clear();
-            cmbTipo.Items.Add("Tipo A");
-            cmbTipo.Items.Add("Tipo B");
-            cmbTipo.SelectedIndex = 0;
+                cmbTipo.Items.Clear();
+                cmbTipo.Items.Add("Tipo A");
+                cmbTipo.Items.Add("Tipo B");
+                cmbTipo.SelectedIndex = 0;
+                UpdatePersonas();
+                cmbPersonas.SelectedIndex = -1;
 
-            UpdatePersonas();
+                cmbTarjetas.Items.Clear();
+                cmbTarjetas.Items.Add("Card Red");
+                cmbTarjetas.Items.Add("Card Green");
+                cmbTarjetas.Items.Add("Card Blue");
+                cmbTarjetas.SelectedIndex = -1;
+                cmbTarjetas.Enabled = false;
 
-            cmbTarjetas.Items.Clear();
-            cmbTarjetas.Items.Add("Card Red");
-            cmbTarjetas.Items.Add("Card Green");
-            cmbTarjetas.Items.Add("Card Blue");
+                btnEfectivo.Checked = false;
+                btnTarjeta.Checked = false;
 
-            txtDias.Text = "1";
-            chkCocina.Checked = false;
-            chkHeladera.Checked = false;
-            chkTelevisor.Checked = false;
-            btnEfectivo.Checked = true;
-            cmbTarjetas.Enabled = false;
-            cmbTarjetas.SelectedIndex = -1;
-            txtNombre.Text = "";
-            txtNumero.Text = "";
-            btnAceptar.Enabled = false;
-        }
+                txtDias.Clear();
+                chkCocina.Checked = false;
+                chkHeladera.Checked = false;
+                chkTelevisor.Checked = false;
+                txtNombre.Clear();
+                txtNumero.Clear();
+
+                btnAceptar.Enabled = false;
+            }
 
         private void UpdatePersonas()
         {
             cmbPersonas.Items.Clear();
+
             if (cmbTipo.SelectedIndex == 0)
             {
-                cmbPersonas.Items.AddRange(new object[] { 1, 2, 3, 4 });
+                for (int i = 1; i <= 4; i++)
+                    cmbPersonas.Items.Add(i);
             }
-            else
+            else if (cmbTipo.SelectedIndex == 1)
             {
-                cmbPersonas.Items.AddRange(new object[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+                for (int i = 1; i <= 8; i++)
+                    cmbPersonas.Items.Add(i);
             }
-            cmbPersonas.SelectedIndex = 0;
-        }
-
-        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdatePersonas();
             cmbPersonas.SelectedIndex = -1;
         }
-
-        private void btnEfectivo_CheckedChanged(object sender, EventArgs e)
+        private void cmbTipo_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-            if (btnEfectivo.Checked)
-            {
-                cmbTarjetas.Enabled = false;
-                cmbTarjetas.SelectedIndex = -1;
-            }
+            UpdatePersonas();
         }
+            private void btnEfectivo_CheckedChanged_1(object sender, EventArgs e)
+            {
+                if (btnEfectivo.Checked)
+                {
+                    cmbTarjetas.Enabled = false;
+                    cmbTarjetas.SelectedIndex = -1;
+                }
+            }
 
-        private void btnTarjeta_CheckedChanged(object sender, EventArgs e)
+        private void btnTarjeta_CheckedChanged_1(object sender, EventArgs e)
         {
             if (btnTarjeta.Checked)
             {
                 cmbTarjetas.Enabled = true;
-                cmbPersonas.SelectedIndex = 0;
+                if (cmbTarjetas.Items.Count > 0)
+                    cmbTarjetas.SelectedIndex = 0;
             }
         }
 
         private void txtDias_TextChanged(object sender, EventArgs e) => CheckAceptar();
         private void txtNombre_TextChanged(object sender, EventArgs e) => CheckAceptar();
-        private void txtTelefono_TextChanged(object sender, EventArgs e) => CheckAceptar();
+        private void txtNumero_TextChanged(object sender, EventArgs e) => CheckAceptar();
 
         private void CheckAceptar()
         {
@@ -98,43 +102,47 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
             bool diasValid = int.TryParse(txtDias.Text, out dias) && dias > 0;
             bool nombreOk = !string.IsNullOrWhiteSpace(txtNombre.Text);
             bool telOk = !string.IsNullOrWhiteSpace(txtNumero.Text);
+            bool personasOk = cmbPersonas.SelectedIndex >= 0;
 
-            btnAceptar.Enabled = diasValid && nombreOk && telOk;
+            btnAceptar.Enabled = diasValid && nombreOk && telOk && personasOk;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private void btnAceptar_Click_1(object sender, EventArgs e)
         {
             int dias = int.Parse(txtDias.Text);
 
-            
-            float precioBase = (cmbTipo.SelectedIndex == 0) ? precioTipoA : precioTipoB;
+                float precioBase = (cmbTipo.SelectedIndex == 0) ? precioTipoA : precioTipoB;
 
-           
-            int personas = Convert.ToInt32(cmbPersonas.SelectedItem);
-            precioBase += porPersona * personas;
+                int personas = Convert.ToInt32(cmbPersonas.SelectedItem);
+                precioBase += porPersona * personas;
 
-            float opcionales = 0;
-            if (chkCocina.Checked) opcionales += cocina;
-            if (chkHeladera.Checked) opcionales += heladera;
-            if (chkTelevisor.Checked) opcionales += televisor;
+                float opcionales = 0;
+                if (chkCocina.Checked) opcionales += cocina;
+                if (chkHeladera.Checked) opcionales += heladera;
+                if (chkTelevisor.Checked) opcionales += televisor;
 
-            
-            float total = (precioBase + opcionales) * dias;
+                float total = (precioBase + opcionales) * dias;
 
-           
-            if (btnTarjeta.Checked)
-            {
-                if (cmbTarjetas.SelectedIndex == 0) 
-                    total += total * 0.10f;
-                else 
-                    total += total * 0.20f;
-            }
+                if (btnTarjeta.Checked)
+                {
+                    if (cmbTarjetas.SelectedIndex == 0)
+                        total += total * 0.10f;
+                    else
+                        total += total * 0.20f;
+                }
 
-            MessageBox.Show($"Total = US$ {total:0.00}", "Importe de la reserva",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Total = US$ {total:0.00}", "Importe de la reserva",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                frmRegistroCabañas_Load_1(sender, e);
+        }
+
+        private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
-
 }
+
 
 

@@ -19,6 +19,18 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         private float heladera = 1.5f;
         private float televisor = 2;
 
+        struct Reserva
+        {
+            string Tipo;
+            int Cantidad;
+            int Dias;
+        }
+
+        Reserva [] vecReserva = new Reserva [10];
+        string [,] matReserva = new string [3,3];
+
+        int IndiceFila = 0;
+
         public frmRegistroCabañas()
         {
             InitializeComponent();
@@ -49,8 +61,6 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
                 chkTelevisor.Checked = false;
                 txtNombre.Clear();
                 txtNumero.Clear();
-
-                btnAceptar.Enabled = false;
             }
 
         private void UpdatePersonas()
@@ -103,12 +113,14 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
             bool nombreOk = !string.IsNullOrWhiteSpace(txtNombre.Text);
             bool telOk = !string.IsNullOrWhiteSpace(txtNumero.Text);
             bool personasOk = cmbPersonas.SelectedIndex >= 0;
-
-            btnAceptar.Enabled = diasValid && nombreOk && telOk && personasOk;
         }
-
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
+            matReserva[IndiceFila, 0] = cmbTipo.Text;
+            matReserva[IndiceFila, 1] = cmbPersonas.Text;
+            matReserva[IndiceFila, 2] = txtDias.Text;
+            IndiceFila++;
+
             int dias = int.Parse(txtDias.Text);
 
                 float precioBase = (cmbTipo.SelectedIndex == 0) ? precioTipoA : precioTipoB;
@@ -138,6 +150,11 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         }
 
         private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CheckAceptar();
+        }
+
+        private void txtNumero_TextChanged_1(object sender, EventArgs e)
         {
 
         }

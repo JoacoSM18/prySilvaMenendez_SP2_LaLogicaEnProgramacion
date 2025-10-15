@@ -267,6 +267,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(291, 23);
             this.txtNumero.TabIndex = 1;
+            this.txtNumero.TextChanged += new System.EventHandler(this.txtNumero_TextChanged_1);
             // 
             // txtNombre
             // 

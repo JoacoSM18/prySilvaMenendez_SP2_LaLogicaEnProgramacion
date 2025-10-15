@@ -146,7 +146,20 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
                 MessageBox.Show($"Total = US$ {total:0.00}", "Importe de la reserva",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                frmRegistroCabañas_Load_1(sender, e);
+                LimpiarUI();
+        }
+        void LimpiarUI()
+        {
+            cmbTipo.SelectedIndex = 0;
+            txtDias.Text = "0";
+            chkCocina.Checked = false;
+            chkHeladera.Checked = false;
+            chkTelevisor.Checked = false;
+
+            btnEfectivo.Checked = true;
+            txtNombre.Text = "";
+            txtNumero.Text = "";
+
         }
 
         private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)

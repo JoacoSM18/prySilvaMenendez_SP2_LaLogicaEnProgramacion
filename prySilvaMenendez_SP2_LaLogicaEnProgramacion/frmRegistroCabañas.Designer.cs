@@ -114,6 +114,7 @@
             // 
             // cmbPersonas
             // 
+            this.cmbPersonas.BackColor = System.Drawing.Color.NavajoWhite;
             this.cmbPersonas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPersonas.FormattingEnabled = true;
             this.cmbPersonas.Location = new System.Drawing.Point(244, 51);
@@ -124,7 +125,7 @@
             // 
             // cmbTipo
             // 
-            this.cmbTipo.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.cmbTipo.BackColor = System.Drawing.Color.NavajoWhite;
             this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Location = new System.Drawing.Point(48, 56);
@@ -285,7 +286,7 @@
             // btnAceptar
             // 
             this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAceptar.Location = new System.Drawing.Point(339, 382);
+            this.btnAceptar.Location = new System.Drawing.Point(390, 382);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(113, 34);
             this.btnAceptar.TabIndex = 4;
@@ -295,6 +296,7 @@
             // 
             // dgvDatos
             // 
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.NavajoWhite;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnTipo,
@@ -302,7 +304,7 @@
             this.ColumnDias});
             this.dgvDatos.Location = new System.Drawing.Point(521, 12);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(347, 355);
+            this.dgvDatos.Size = new System.Drawing.Size(343, 355);
             this.dgvDatos.TabIndex = 5;
             // 
             // ColumnTipo

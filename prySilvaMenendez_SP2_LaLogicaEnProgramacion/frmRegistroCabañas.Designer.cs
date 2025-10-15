@@ -50,10 +50,15 @@
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnAceptar = new System.Windows.Forms.Button();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.ColumnTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPersonas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDias = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mrcTipo.SuspendLayout();
             this.mrcAdicionales.SuspendLayout();
             this.mrcFormadePago.SuspendLayout();
             this.mrcTitular.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
             // mrcTipo
@@ -288,17 +293,46 @@
             this.btnAceptar.UseVisualStyleBackColor = true;
             this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click_1);
             // 
+            // dgvDatos
+            // 
+            this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnTipo,
+            this.ColumnPersonas,
+            this.ColumnDias});
+            this.dgvDatos.Location = new System.Drawing.Point(521, 12);
+            this.dgvDatos.Name = "dgvDatos";
+            this.dgvDatos.Size = new System.Drawing.Size(347, 355);
+            this.dgvDatos.TabIndex = 5;
+            // 
+            // ColumnTipo
+            // 
+            this.ColumnTipo.HeaderText = "Tipo";
+            this.ColumnTipo.Name = "ColumnTipo";
+            // 
+            // ColumnPersonas
+            // 
+            this.ColumnPersonas.HeaderText = "Personas";
+            this.ColumnPersonas.Name = "ColumnPersonas";
+            // 
+            // ColumnDias
+            // 
+            this.ColumnDias.HeaderText = "Dias";
+            this.ColumnDias.Name = "ColumnDias";
+            // 
             // frmRegistroCabañas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(509, 428);
+            this.ClientSize = new System.Drawing.Size(893, 428);
+            this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.mrcTitular);
             this.Controls.Add(this.mrcFormadePago);
             this.Controls.Add(this.mrcAdicionales);
             this.Controls.Add(this.mrcTipo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmRegistroCabañas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Registro de Reserva de Cabañas";
@@ -311,6 +345,7 @@
             this.mrcFormadePago.PerformLayout();
             this.mrcTitular.ResumeLayout(false);
             this.mrcTitular.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -339,6 +374,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDias;
+        private System.Windows.Forms.DataGridView dgvDatos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPersonas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDias;
     }
 }
 

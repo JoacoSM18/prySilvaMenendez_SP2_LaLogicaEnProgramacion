@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
 {
@@ -237,50 +238,55 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         }
         private void btnAceptar_Click_1(object sender, EventArgs e)
         {
+            if (cmbTipo.SelectedIndex == -1 || cmbPersonas.SelectedIndex == -1
+                || string.IsNullOrWhiteSpace(txtDias.Text)
+                || (!btnEfectivo.Checked && !btnTarjeta.Checked)
+                || string.IsNullOrWhiteSpace(txtNombre.Text)
+                || string.IsNullOrWhiteSpace(txtNumero.Text))
+            {
+                MessageBox.Show("Datos Incompletos, Por Favor Complete Todos los Campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            int dias;
+            if (!int.TryParse(txtDias.Text, out dias))
+            {
+                MessageBox.Show("Ingrese un número válido en los días.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             matReserva[IndiceFila, 0] = cmbTipo.Text;
             matReserva[IndiceFila, 1] = cmbPersonas.Text;
             matReserva[IndiceFila, 2] = txtDias.Text;
             IndiceFila++;
-
-            int dias = int.Parse(txtDias.Text);
-
-                float precioBase = (cmbTipo.SelectedIndex == 0) ? precioTipoA : precioTipoB;
-
-                int personas = Convert.ToInt32(cmbPersonas.SelectedItem);
-                precioBase += porPersona * personas;
-
-                float opcionales = 0;
-                if (chkCocina.Checked) opcionales += cocina;
-                if (chkHeladera.Checked) opcionales += heladera;
-                if (chkTelevisor.Checked) opcionales += televisor;
-
-                float total = (precioBase + opcionales) * dias;
-
-                if (btnTarjeta.Checked)
-                {
-                    if (cmbTarjetas.SelectedIndex == 0)
-                        total += total * 0.10f;
-                    else
-                        total += total * 0.20f;
-                }
-
-                MessageBox.Show($"Total = US$ {total:0.00}", "Importe de la reserva",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                LimpiarUI();
+            float precioBase = (cmbTipo.SelectedIndex == 0) ? precioTipoA : precioTipoB;
+            int personas = Convert.ToInt32(cmbPersonas.SelectedItem);
+            precioBase += porPersona * personas;
+            float opcionales = 0;
+            if (chkCocina.Checked) opcionales += cocina;
+            if (chkHeladera.Checked) opcionales += heladera;
+            if (chkTelevisor.Checked) opcionales += televisor;
+            float total = (precioBase + opcionales) * dias;
+            if (btnTarjeta.Checked)
+            {
+                if (cmbTarjetas.SelectedIndex == 0)
+                    total += total * 0.10f;
+                else
+                    total += total * 0.20f;
+            }
+            MessageBox.Show($"Total = US$ {total:0.00}", "Importe de la reserva", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            LimpiarUI();
         }
         void LimpiarUI()
         {
-            cmbTipo.SelectedIndex = 0;
+            cmbTipo.SelectedIndex = -1;
+            cmbTarjetas.SelectedIndex = -1;
             txtDias.Text = "0";
             chkCocina.Checked = false;
             chkHeladera.Checked = false;
             chkTelevisor.Checked = false;
-
-            btnEfectivo.Checked = true;
+            btnEfectivo.Checked = false;
+            btnTarjeta.Checked = false;
             txtNombre.Text = "";
             txtNumero.Text = "";
-
         }
 
         private void cmbPersonas_SelectedIndexChanged(object sender, EventArgs e)
@@ -291,6 +297,11 @@ namespace prySilvaMenendez_SP2_LaLogicaEnProgramacion
         private void txtNumero_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
